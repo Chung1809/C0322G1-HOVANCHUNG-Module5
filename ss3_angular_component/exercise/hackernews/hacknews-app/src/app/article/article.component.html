@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <table class="table" >
+      <thead>
+      <tr>
+        <th scope="col">Title</th>
+        <th scope="col">Url</th>
+        <th scope="col">Like</th>
+
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let temp of articles">
+        <td>{{temp.title}}</td>
+        <td><a href="{{temp.url}}">{{temp.url}}</a></td>
+        <td><app-like></app-like></td>
+      </tr>
+
+      </tbody>
+    </table>
+
+  </div>
+</div>
