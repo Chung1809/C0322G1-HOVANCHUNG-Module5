@@ -1,0 +1,107 @@
+<h2 style="text-align: center">List Customer</h2>
+
+<a [routerLink]="['/create-customer']">Create Customer</a>
+
+
+<div class="container">
+  <div class="row">
+    <table class="table" >
+      <thead>
+      <tr>
+        <th scope="col">STT</th>
+        <th scope="col">Code</th>
+        <th scope="col">Type Customer</th>
+        <th scope="col">Customer Name</th>
+        <th scope="col">Date Of Birthday</th>
+        <th scope="col">Gender</th>
+        <th scope="col">Id Card</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Email</th>
+        <th scope="col">Address</th>
+        <th scope="col">Sửa </th>
+        <th scope="col">Xoá</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>1</td>
+        <td>KH-1234</td>
+        <td>Platinum</td>
+        <td>Nam</td>
+        <td>2022-05-15</td>
+        <td>Nam</td>
+        <td>197156165</td>
+        <td>0916515615</td>
+        <td>abc@gmail.com</td>
+        <td>Quảng Nam</td>
+        <td><button class="btn btn-success btn-sm">Edit</button></td>
+        <td><button  class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          Delete
+        </button></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>KH-1234</td>
+        <td>Platinum</td>
+        <td>Như</td>
+        <td>2022-07-15</td>
+        <td>Nữ</td>
+        <td>194563697</td>
+        <td>0963698785</td>
+        <td>khanh@gmail.com</td>
+        <td>Quang Binh</td>
+        <td><button class="btn btn-success btn-sm">Edit</button></td>
+        <td><button  class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          Delete
+        </button></td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>KH-1235</td>
+        <td>Platinum</td>
+        <td>Vân</td>
+        <td>2022-07-15</td>
+        <td>Nữ</td>
+        <td>194563697</td>
+        <td>0963698785</td>
+        <td>khanh@gmail.com</td>
+        <td>Quang Binh</td>
+        <td><button class="btn btn-success btn-sm">Edit</button></td>
+        <td><button  class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          Delete
+        </button></td>
+      </tr>
+
+      </tbody>
+    </table>
+
+  </div>
+</div>
+
+<div style="text-align: center;padding-bottom: 50px">
+  <button class="btn btn-light">Previous</button>
+  <button class="btn btn-light">1</button>
+  <button class="btn btn-light">2</button>
+  <button class="btn btn-light">3</button>
+  <button class="btn btn-light">4</button>
+  <button class="btn btn-light">Next</button>
+
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h3>You want to facility?</h3>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+

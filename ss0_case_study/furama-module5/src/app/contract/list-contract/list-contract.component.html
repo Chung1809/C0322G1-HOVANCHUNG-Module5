@@ -1,0 +1,131 @@
+<h2 style="text-align: center">List Contract</h2>
+
+  <a [routerLink]="['/create-contract']">Create Contract</a>
+
+
+<!--        ->-->
+<div class="container">
+  <div class="row">
+    <table class="table" >
+      <thead>
+      <tr>
+        <th scope="col">STT</th>
+        <th scope="col"> Facility</th>
+        <th scope="col">Customer</th>
+        <th scope="col">Start date</th>
+        <th scope="col">End date</th>
+        <th scope="col">Deposit</th>
+        <th scope="col">Total money</th>
+        <th scope="colspan = 2">Attach Service</th>
+
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>1</td>
+        <td>Villa</td>
+        <td>Vân</td>
+        <td>2022-07-15</td>
+        <td>2022-07-16</td>
+        <td>100</td>
+        <td>1000</td>
+        <td>
+          <div class="row">
+            <div class="col-md-3">
+              <button class="btn btn-primary btn-sm ">
+                <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-plus-square-fill" viewBox="0 0 16 16">
+                  <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z"/>
+                </svg>
+              </button>
+            </div>
+            <div class="col-md-9">
+              <button  class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#exampleModal">
+                List of included services
+              </button>
+            </div>
+          </div>
+        </td>
+
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Room</td>
+        <td>Tú</td>
+        <td>2022-07-15</td>
+        <td>2022-07-26</td>
+        <td>100</td>
+        <td>1000</td>
+        <td>
+          <div class="row">
+            <div class="col-md-3">
+              <button class="btn btn-primary btn-sm ">
+                <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-plus-square-fill" viewBox="0 0 16 16">
+                  <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z"/>
+                </svg>
+              </button>
+            </div>
+            <div class="col-md-9">
+              <button  class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#exampleModal">
+                List of included services
+              </button>
+            </div>
+          </div>
+        </td>
+
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>House</td>
+        <td>Quang Ngọc</td>
+        <td>2022-07-1</td>
+        <td>2022-07-5</td>
+        <td>100</td>
+        <td>1000</td>
+
+        <td>
+          <div class="row">
+            <div class="col-md-3">
+              <button class="btn btn-primary btn-sm ">
+                <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-plus-square-fill" viewBox="0 0 16 16">
+                  <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z"/>
+                </svg>
+              </button>
+            </div>
+            <div class="col-md-9">
+              <button  class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#exampleModal">
+                List of included services
+              </button>
+            </div>
+          </div>
+      </tr>
+
+      </tbody>
+    </table>
+
+  </div>
+</div>
+<div style="text-align: center;padding-bottom: 50px">
+  <button class="btn btn-light">Previous</button>
+  <button class="btn btn-light">1</button>
+  <button class="btn btn-light">2</button>
+  <button class="btn btn-light">3</button>
+  <button class="btn btn-light">4</button>
+  <button class="btn btn-light">Next</button>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h3>You want to use attach facility</h3>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
