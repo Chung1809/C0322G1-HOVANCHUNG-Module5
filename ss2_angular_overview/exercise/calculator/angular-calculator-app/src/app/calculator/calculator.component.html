@@ -1,0 +1,15 @@
+<h3 style="text-align: center">Calculator</h3>
+<div class="calculator__keys" style="text-align: center">
+  <div>
+    <input type="text" placeholder="0" [(ngModel)]="firstOperand">
+    <input type="text" placeholder="0" [(ngModel)]="secondOperand">
+  </div>
+  <br>
+  <div>
+    <button (click)="doAddition();">+</button>
+    <button (click)="doSubtraction();">-</button>
+    <button (click)="doMultiplication();">*</button>
+    <button (click)="doDivision();">/</button>
+  </div>
+  <h3>Result :{{result}}</h3>
+</div>
