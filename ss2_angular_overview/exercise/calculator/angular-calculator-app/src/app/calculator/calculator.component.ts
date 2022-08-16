@@ -18,24 +18,22 @@ export class CalculatorComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  doAddition() {
-    this.result = String(parseFloat(this.firstOperand) + parseFloat(this.secondOperand));
-  }
-
-  doSubtraction() {
-    this.result = String(parseFloat(this.firstOperand) - parseFloat(this.secondOperand));
-  }
-
-  doMultiplication() {
-    this.result = String(parseFloat(this.firstOperand) * parseFloat(this.secondOperand));
-  }
-
-  doDivision() {
-    // @ts-ignore
-    if (this.secondOperand == 0) {
-      this.result = "Not enter number 0";
-    } else {
-      this.result = String(parseFloat(this.firstOperand) / parseFloat(this.secondOperand));
+  calculator(operator:string){
+    if(operator === '+'){
+      this.result = String(parseFloat(this.firstOperand) + parseFloat(this.secondOperand));
+    }else if(operator === '-'){
+      this.result = String(parseFloat(this.firstOperand) - parseFloat(this.secondOperand));
+    }else if(operator === '*'){
+      this.result = String(parseFloat(this.firstOperand) * parseFloat(this.secondOperand));
+    }else if(operator === '/'){
+      // @ts-ignore
+      if (this.secondOperand == 0) {
+        this.result = "Not enter number 0";
+      } else {
+        this.result = String(parseFloat(this.firstOperand) / parseFloat(this.secondOperand));
+      }
     }
   }
+
+
 }
