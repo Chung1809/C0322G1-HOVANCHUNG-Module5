@@ -1,0 +1,79 @@
+<h2 style="text-align: center">List Customer</h2>
+
+<div class="row">
+  <div class="col-md-12 a"><a [routerLink]="['/create-customer']">Create Customer</a></div>
+</div>
+
+
+<div class="container">
+  <div class="row">
+    <table class="table" >
+      <thead>
+      <tr>
+        <th scope="col">STT</th>
+        <th scope="col">Code</th>
+        <th scope="col">Type Customer</th>
+        <th scope="col">Customer Name</th>
+        <th scope="col">Date Of Birthday</th>
+        <th scope="col">Gender</th>
+        <th scope="col">Id Card</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Email</th>
+        <th scope="col">Address</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let temp of customer">
+        <td>{{temp.id}}</td>
+        <td>{{temp.code}}</td>
+        <td>{{temp.typeCustomer}}</td>
+        <td>{{temp.name}}</td>
+        <td>{{temp.birthDay}}</td>
+        <td *ngIf="temp.gender == true">Male</td>
+        <td *ngIf="temp.gender == false">Female</td>
+        <td>{{temp.card}}</td>
+        <td>{{temp.phone}}</td>
+        <td>{{temp.email}}</td>
+        <td>{{temp.address}}</td>
+        <td><button class="btn btn-success btn-sm" [routerLink]="['/update-customer',temp.id]">Edit</button></td>
+        <td><button  class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          Delete
+        </button></td>
+      </tr>
+
+
+      </tbody>
+    </table>
+
+  </div>
+</div>
+
+<div style="text-align: center;padding-bottom: 50px">
+  <button class="btn btn-light">Previous</button>
+  <button class="btn btn-light">1</button>
+  <button class="btn btn-light">2</button>
+  <button class="btn btn-light">3</button>
+  <button class="btn btn-light">4</button>
+  <button class="btn btn-light">Next</button>
+
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h3>You want to customer?</h3>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+

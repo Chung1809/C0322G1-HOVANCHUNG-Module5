@@ -1,0 +1,73 @@
+<div class="row div" style="justify-content: center">
+  <form class="needs-validation p-4"
+        style="background-color: whitesmoke; border-radius: 1rem; width: 70%" novalidate>
+    <div class="form-row">
+      <div class="col-md-4 mb-3">
+        <label >Customer</label>
+        <select  class="form-control" >
+          <option></option>
+        </select>
+      </div>
+      <div class="col-md-4 mb-3">
+        <label >Facility</label>
+        <select  class="form-control" >
+          <option></option>
+        </select>
+      </div>
+      <div class="col-md-4 mb-3">
+        <label >Start date</label>
+        <input type="date"  class="form-control">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-md-4 mb-3">
+        <label >End date</label>
+        <input type="date" class="form-control">
+      </div>
+      <div class="col-md-4 mb-3">
+        <label>Deposit</label>
+        <input type="text"  class="form-control"  >
+      </div>
+      <div class="col-md-4 mb-3">
+        <label>Total money</label>
+        <input type="text"  class="form-control"
+        >
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-md-2">
+        <label >Attach facility</label>
+      </div>
+      <div class="col-md-10">
+        <button class="btn btn-primary btn-sm ">
+          <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-plus-square-fill" viewBox="0 0 16 16">
+            <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z"/>
+          </svg>
+        </button>
+      </div>
+
+
+    </div>
+    <div class="form-group">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+        <label class="form-check-label" for="invalidCheck">
+          Agree to terms and conditions
+        </label>
+        <div class="invalid-feedback">
+          You must agree before submitting.
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-1">
+        <a [routerLink]="['/list-contract']"><button class="btn text-white" type="submit" style="background-color: black">Back</button></a>
+      </div>
+      <div class="col-md-1">
+        <button class="btn text-white" type="submit" style="background-color: black">Create</button>
+      </div>
+      <div class="col-md-10"></div>
+    </div>
+  </form>
+
+</div>
