@@ -13,8 +13,8 @@ export class LogInComponent implements OnInit {
   ngOnInit(): void {
   }
   logIn = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.pattern('^[A-Za-z0-9+_.-]+@(.+)$')]),
-    password: new FormControl('', Validators.pattern('^[A-Za-z0-9]{6,}')),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', Validators.minLength(6)),
   })
   get email() {
     return this.logIn.get('email');

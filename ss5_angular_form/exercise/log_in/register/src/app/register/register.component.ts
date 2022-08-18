@@ -12,8 +12,8 @@ import {ServiceService} from '../countries/service/service.service';
 export class RegisterComponent implements OnInit {
   register: Country[] = [];
   registerForm = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.pattern('^[A-Za-z0-9+_.-]+@(.+)$')]),
-    password: new FormControl('', Validators.pattern('^[A-Za-z0-9]{6,}')),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', Validators.minLength(6)),
     confirmPassword: new FormControl('', [Validators.required]),
     phone: new FormControl('', [Validators.required, Validators.pattern('^\\+84\\d{9,10}$')]),
     gender: new FormControl('', Validators.required),
