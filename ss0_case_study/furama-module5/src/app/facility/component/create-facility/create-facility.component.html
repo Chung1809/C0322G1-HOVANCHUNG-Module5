@@ -1,11 +1,11 @@
 <div class="row div" style="justify-content: center">
-  <form  class="needs-validation p-4"
+  <form [formGroup]="facilityForm" class="needs-validation p-4"
         style="background-color: whitesmoke; border-radius: 1rem; width: 70%" novalidate>
     <div class="form-row">
       <div class="col-md-4 mb-3">
         <label >Facility Name</label>
-        <input type="text" class="form-control"
-        >
+        <input type="text" class="form-control" formControlName="name">
+        <p style="color: red" *ngIf="!name.valid && (name.dirty ||name.touched)">Can't be blank and contain numeric characters</p>
       </div>
       <div class="col-md-4 mb-3">
         <label >Type Facility</label>
@@ -23,43 +23,55 @@
     <div class="form-row">
       <div class="col-md-4 mb-3">
         <label >Area</label>
-        <input type="text"  class="form-control"
-               placeholder="" required>
+        <input type="text"  class="form-control" placeholder="" required formControlName="area">
+        <p style="color: red" *ngIf="!area.valid && (area.dirty ||area.touched)">Can't be left blank</p>
+
       </div>
       <div class="col-md-4 mb-3">
         <label>Cost</label>
-        <input type="text"  class="form-control">
+        <input type="text"  class="form-control" formControlName="cost">
+        <p style="color: red" *ngIf="!cost.valid && (cost.dirty ||cost.touched)">Can't be blank and price is positive</p>
       </div>
       <div class="col-md-4 mb-3">
         <label>People</label>
-        <input type="text"  class="form-control">
+        <input type="text"  class="form-control" formControlName="people">
+        <p style="color: red" *ngIf="!people.valid && (people.dirty ||people.touched)">Can't be left blank</p>
       </div>
     </div>
     <div class="form-row">
       <div class="col-md-4 mb-3">
         <label>Standard Room</label>
-        <input type="text"  class="form-control">
+        <input type="text"  class="form-control" formControlName="standardRoom">
+        <p style="color: red" *ngIf="!standardRoom.valid && (standardRoom.dirty ||standardRoom.touched)">Can't be left blank</p>
 
       </div>
       <div class="col-md-4 mb-3">
         <label>Description</label>
-        <input type="text"  class="form-control">
+        <input type="text"  class="form-control" formControlName="description">
+        <p style="color: red" *ngIf="!description.valid && (description.dirty ||description.touched)">Can't be left blank</p>
       </div>
       <div class="col-md-4 mb-3">
         <label >Area Pool</label>
-        <input type="text"  class="form-control">
+        <input type="text"  class="form-control" formControlName="areaPool">
+        <p style="color: red" *ngIf="!areaPool.valid && (areaPool.dirty ||areaPool.touched)">Can't be blank and is a positive number</p>
       </div>
     </div>
     <div class="form-row">
       <div class="col-md-4 mb-3">
         <label >Floor</label>
-        <input type="text"  class="form-control">
+        <input type="text"  class="form-control" formControlName="floor">
+        <p style="color: red" *ngIf="!floor.valid && (floor.dirty ||floor.touched)">Can't be blank and is a positive number</p>
       </div>
       <div class="col-md-4 mb-3">
         <label >Facility Free</label>
         <select  class="form-control" >
           <option ></option>
         </select>
+      </div>
+      <div class="col-md-4 mb-3">
+        <label >Url</label>
+        <input type="text"  class="form-control" formControlName="url">
+        <p style="color: red" *ngIf="!url.valid && (url.dirty ||url.touched)">Can't be left blank</p>
       </div>
     </div>
 

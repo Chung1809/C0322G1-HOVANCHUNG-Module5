@@ -1,15 +1,20 @@
 <h2 style="text-align: center">List Contract</h2>
 
-<div class="row">
-  <div class="col-md-12 a"> <a [routerLink]="['/create-contract']">Create Contract</a></div>
-</div>
-<!--        ->-->
+<div class="row x container">
+  <div class="col-md-2">
+  </div>
+  <div class="col-md-2">
+    <a [routerLink]="['/create-contract']"><button class="btn btn-primary">Create Contract</button></a>
+  </div>
+  <div class="col-md-8"></div>
+</div><!--        ->-->
+
 <div class="container">
   <div class="row">
     <table class="table" >
       <thead>
       <tr>
-        <th scope="col">STT</th>
+        <th scope="col">#</th>
         <th scope="col"> Facility</th>
         <th scope="col">Customer</th>
         <th scope="col">Start date</th>
@@ -21,10 +26,10 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let temp of contract">
+      <tr *ngFor="let temp of contracts">
         <td>{{temp.id}}</td>
-        <td>{{temp.typeFacility}}</td>
-        <td>{{temp.typeCustomer}}</td>
+        <td>{{temp.typeFacility.name}}</td>
+        <td>{{temp.typeCustomer.name}}</td>
         <td>{{temp.startDate}}</td>
         <td>{{temp.endDate}}</td>
         <td>{{temp.deposit}}</td>

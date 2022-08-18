@@ -1,6 +1,5 @@
 <div class="row div" style="justify-content: center">
-  <form class="needs-validation p-4"
-        style="background-color: whitesmoke; border-radius: 1rem; width: 70%" novalidate>
+  <form [formGroup]="customerForm" class="needs-validation p-4" style="background-color: whitesmoke; border-radius: 1rem; width: 70%" novalidate>
     <div class="form-row">
       <div class="col-md-4 mb-3">
         <label >Code Customer</label>
@@ -16,7 +15,8 @@
       <div class="col-md-4 mb-3">
         <label >Customer Name</label>
         <input type="text"  class="form-control"
-               placeholder="Le Van A" required>
+               placeholder="Le Van A" name="name" formControlName="name">
+        <p style="color: red" *ngIf="!name.valid && (name.dirty ||name.touched)">First letter must be capitalized</p>
       </div>
     </div>
     <div class="form-row">
@@ -27,19 +27,20 @@
       </div>
       <div class="col-md-4 mb-3">
         <label>ID Card</label>
-        <input type="text"  class="form-control"  placeholder="1945XXXXX" required>
+        <input type="text"  class="form-control"  placeholder="1945XXXXX" required name="card" formControlName="card">
+        <p style="color: red" *ngIf="!card.valid && (card.dirty ||card.touched)">You entered the wrong format</p>
       </div>
       <div class="col-md-4 mb-3">
         <label>Phone</label>
-        <input type="text"  class="form-control"
-        >
+        <input type="text"  class="form-control" placeholder="09XXXXXXX" name="phone" formControlName="phone">
+        <p style="color: red" *ngIf="!phone.valid && (phone.dirty ||phone.touched)">You entered the wrong format</p>
       </div>
     </div>
     <div class="form-row">
       <div class="col-md-4 mb-3">
         <label> Email</label>
-        <input type="text"  class="form-control"
-               placeholder="abc@gmail.com" required>
+        <input type="text"  class="form-control" placeholder="abc@gmail.com" name="email" required formControlName="email">
+        <p style="color: red" *ngIf="!email.valid && (email.dirty ||email.touched)">You entered the wrong format</p>
       </div>
       <div class="col-md-4 mb-3">
         <label >Address</label>
@@ -66,10 +67,10 @@
     </div>
     <div class="row">
     <div class="col-md-1">
-      <a [routerLink]="['/list-facility']"><button class="btn text-white" type="submit" style="background-color: black">Back</button></a>
+      <a [routerLink]="['/list-customer']"><button class="btn text-white" type="submit" style="background-color: black">Back</button></a>
     </div>
     <div class="col-md-1">
-      <button class="btn text-white" type="submit" style="background-color: black">Create</button>
+      <button class="btn text-white" type="submit" style="background-color: black" [disabled]="!customerForm.valid">Create</button>
     </div>
     <div class="col-md-10"></div>
     </div>

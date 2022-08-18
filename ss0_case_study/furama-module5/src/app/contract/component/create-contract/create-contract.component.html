@@ -1,6 +1,5 @@
 <div class="row div" style="justify-content: center">
-  <form class="needs-validation p-4"
-        style="background-color: whitesmoke; border-radius: 1rem; width: 70%" novalidate>
+  <form [formGroup]="contractForm" class="needs-validation p-4" style="background-color: whitesmoke; border-radius: 1rem; width: 70%" novalidate>
     <div class="form-row">
       <div class="col-md-4 mb-3">
         <label >Customer</label>
@@ -26,12 +25,14 @@
       </div>
       <div class="col-md-4 mb-3">
         <label>Deposit</label>
-        <input type="text"  class="form-control"  >
+        <input type="text"  class="form-control" formControlName="deposit" >
+        <p style="color: red" *ngIf="!deposit.valid && (deposit.dirty ||deposit.touched)">Cannot to blank and is positive number</p>
       </div>
       <div class="col-md-4 mb-3">
         <label>Total money</label>
-        <input type="text"  class="form-control"
-        >
+        <input type="text"  class="form-control" formControlName="totalMoney">
+        <p style="color: red" *ngIf="!totalMoney.valid && (totalMoney.dirty ||totalMoney.touched)">Cannot to blank and is positive number</p>
+
       </div>
     </div>
     <div class="form-row">
