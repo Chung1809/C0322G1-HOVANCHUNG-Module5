@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Contract} from "../model/contract";
+import {CustomerServiceService} from "../../customer/service-customer/customer-service.service";
 
 @Injectable({
   providedIn: 'root'
@@ -15,5 +16,9 @@ export class ContractService {
   constructor() { }
   getList(){
     return this.contract
+  }
+
+  save(contract: any) {
+    this.contract.push(contract);
   }
 }

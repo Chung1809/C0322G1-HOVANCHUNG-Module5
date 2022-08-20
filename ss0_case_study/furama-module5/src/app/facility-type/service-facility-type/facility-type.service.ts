@@ -11,4 +11,7 @@ export class FacilityTypeService {
     {id:3,name:'Villa'},
   ]
   constructor() { }
+  getList(){
+    return this.facilityType;
+  }
 }

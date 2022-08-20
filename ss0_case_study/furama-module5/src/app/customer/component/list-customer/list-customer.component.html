@@ -30,20 +30,20 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let temp of customerList">
+      <tr *ngFor="let temp of customerListCustomer">
         <td>{{temp.id}}</td>
         <td>{{temp.code}}</td>
         <td>{{temp.typeCustomer.name}}</td>
         <td>{{temp.name}}</td>
         <td>{{temp.birthDay}}</td>
-        <td *ngIf="temp.gender == true">Male</td>
-        <td *ngIf="temp.gender == false">Female</td>
+        <td *ngIf="temp.gender == 0">Male</td>
+        <td *ngIf="temp.gender == 1">Female</td>
         <td>{{temp.card}}</td>
         <td>{{temp.phone}}</td>
         <td>{{temp.email}}</td>
         <td>{{temp.address}}</td>
-        <td><button class="btn btn-success btn-sm" [routerLink]="['/update-customer',temp.id]">Edit</button></td>
-        <td><button  class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <td><button class="btn btn-success btn-sm"  [routerLink]="['/update-customer',temp.id]">Edit</button></td>
+        <td><button (click)="deleteCustomer(temp)"  class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
           Delete
         </button></td>
       </tr>
@@ -72,11 +72,11 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <h3>You want to customer?</h3>
+        <h3>You want to delete name : {{nameDelete}}</h3>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Delete</button>
+        <button type="button" class="btn btn-primary" (click)="delete(idDelete)" data-bs-dismiss="modal" >Delete</button>
       </div>
     </div>
   </div>

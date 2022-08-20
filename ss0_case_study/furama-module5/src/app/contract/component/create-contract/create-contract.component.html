@@ -1,27 +1,33 @@
 <div class="row div" style="justify-content: center">
-  <form [formGroup]="contractForm" class="needs-validation p-4" style="background-color: whitesmoke; border-radius: 1rem; width: 70%" novalidate>
+  <form [formGroup]="contractForm" (ngSubmit)="submit()" class="needs-validation p-4" style="background-color: whitesmoke; border-radius: 1rem; width: 70%" novalidate>
     <div class="form-row">
       <div class="col-md-4 mb-3">
         <label >Customer</label>
-        <select  class="form-control" >
-          <option></option>
+        <select  class="form-control" formControlName="typeCustomer">
+          <option *ngFor="let temp of customers" [ngValue]="temp">{{temp.name}}</option>
         </select>
+        <p style="color: red" *ngIf="!typeCustomer.valid && (typeCustomer.dirty ||typeCustomer.touched)">You enter wrong format</p>
+
       </div>
       <div class="col-md-4 mb-3">
         <label >Facility</label>
-        <select  class="form-control" >
-          <option></option>
+        <select  class="form-control" formControlName="typeFacility">
+          <option *ngFor="let temp of facilityTypeList" [ngValue]="temp">{{temp.name}}</option>
         </select>
+        <p style="color: red" *ngIf="!typeFacility.valid && (typeFacility.dirty ||typeFacility.touched)">You enter wrong format</p>
       </div>
       <div class="col-md-4 mb-3">
         <label >Start date</label>
-        <input type="date"  class="form-control">
+        <input type="date"  class="form-control" formControlName="startDate">
+        <p style="color: red" *ngIf="!startDate.valid && (startDate.dirty ||startDate.touched)">You enter wrong format</p>
       </div>
     </div>
     <div class="form-row">
       <div class="col-md-4 mb-3">
         <label >End date</label>
-        <input type="date" class="form-control">
+        <input type="date" class="form-control" formControlName="endDate">
+        <p style="color: red" *ngIf="!endDate.valid && (endDate.dirty ||endDate.touched)">You enter wrong format</p>
+
       </div>
       <div class="col-md-4 mb-3">
         <label>Deposit</label>

@@ -7,7 +7,7 @@ export interface Customer {
   typeCustomer?:CustomerType;
   name?:string;
   birthDay?:string;
-  gender?:boolean;
+  gender?:number;
   card?:string;
   phone?:string;
   email?:string;

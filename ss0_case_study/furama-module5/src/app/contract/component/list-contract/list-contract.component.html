@@ -26,8 +26,8 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let temp of contracts">
-        <td>{{temp.id}}</td>
+      <tr *ngFor="let temp of contracts; index as i">
+        <td>{{i+1}}</td>
         <td>{{temp.typeFacility.name}}</td>
         <td>{{temp.typeCustomer.name}}</td>
         <td>{{temp.startDate}}</td>
