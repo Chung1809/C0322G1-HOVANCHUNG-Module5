@@ -1,0 +1,76 @@
+<strong><h2>Subscribe</h2></strong>
+<div class="row div" style="justify-content: center">
+  <form [formGroup]="subscribeForm" class="needs-validation p-4" style="background-color: whitesmoke; border-radius: 1rem; width: 70%" novalidate>
+    <div class="form-row">
+      <div class="col-md-4 mb-3">
+        <label >Email</label>
+        <input type="text"  class="form-control"
+               placeholder="Le Van A" name="name" formControlName="email">
+        <p style="color: red" *ngIf="!email.valid && (email.dirty ||email.touched)">You entered th wrong format</p>
+      </div>
+      <div class="col-md-4 mb-3">
+        <label>Password</label>
+        <input type="text"  class="form-control"  required name="card" formControlName="password">
+        <p style="color: red" *ngIf="!password.valid && (password.dirty ||password.touched) ">You entered the wrong format</p>
+      </div>
+      <div class="col-md-4 mb-3">
+        <label >Confirm password</label>
+        <input type="text" class="form-control "  required formControlName="confirmPassword">
+        <p style="color: red" *ngIf="subscribeForm.errors?.mismatched &&(subscribeForm.controls.confirmPassword?.dirty|| subscribeForm.controls.confirmPassword?.touched)">You entered the wrong format</p>
+
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-md-4 mb-3">
+        <label >Date Of Birth</label>
+        <input type="text" class="form-control" placeholder="" required formControlName="age">
+        <p style="color: red" *ngIf="!age.valid && (age.dirty ||age.touched)">You entered th wrong format</p>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <label>Phone</label>
+        <input type="text"  class="form-control" placeholder="084+XXXXXXX" name="phone" formControlName="phone">
+        <p style="color: red" *ngIf="!phone.valid && (phone.dirty ||phone.touched)">You entered the wrong format</p>
+      </div>
+      <div class="col-md-4 mb-3">
+        <label >Gender</label>
+        <div class="row">
+          <div class="col-md-1"></div>
+          <div class="col-md-4"> <input class="form-check-input" type="radio" value="false" name="gender" formControlName="gender" >Nữ</div>
+          <div class="col-md-6"><input class="form-check-input" type="radio" value="true" name="gender" formControlName="gender">Nam</div>
+        </div>
+        <p style="color: red" *ngIf="!gender.valid && (gender.dirty ||gender.touched)">You entered the wrong format</p>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-md-4 mb-3">
+        <label >Country</label>
+        <select  class="form-control"  formControlName="country">
+          <option value="choose">Choose</option>
+          <option *ngFor="let item of subscribe" [ngValue]="item">{{item.name}}</option>
+        </select>
+        <p style="color: red" *ngIf="!country.valid && (country.dirty ||country.touched)">You entered the wrong format</p>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+        <label class="form-check-label" for="invalidCheck">
+          Agree to terms and conditions
+        </label>
+        <div class="invalid-feedback">
+          You must agree before submitting.
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+        <button class="btn text-white" type="submit" style="background-color: black" [disabled]="!subscribeForm.valid">Subscribe</button>
+      </div>
+      <div class="col-md-4"></div>
+    </div>
+  </form>
+
+</div>
+
