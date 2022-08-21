@@ -39,10 +39,10 @@ export class ProductService {
   saveProduct(product) {
    return this.products.push(product);
   }
-  findById(id: number){
-    return this.products.find((p)=> p.id === id);
+  findById(id: number): Product{
+    return this.products.find((p)=> p.id == id);
   }
-  update(id: number, product: Product) {
+  update(id: number, product: Product): void {
     for (let i = 0; i < this.products.length; i++) {
       if (this.products[i].id === id) {
         this.products[i] = product;
@@ -50,7 +50,7 @@ export class ProductService {
     }
   }
 
-  delete(idDelete: any) {
+  delete(idDelete: any): void {
     this.products = this.products.filter(p => { return p.id !== idDelete})
   }
 }

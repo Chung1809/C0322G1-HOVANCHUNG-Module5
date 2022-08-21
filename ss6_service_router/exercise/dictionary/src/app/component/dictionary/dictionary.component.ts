@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Dictionary} from "../../model/dictionary";
-import {DictionaryService} from "../../service/dictionary.service";
+import {Dictionary} from '../../model/dictionary';
+import {DictionaryService} from '../../service/dictionary.service';
 
 @Component({
   selector: 'app-dictionary',
@@ -10,7 +10,6 @@ import {DictionaryService} from "../../service/dictionary.service";
 export class DictionaryComponent implements OnInit {
 
   dictionaries: Dictionary[];
-  searchWord: string;
 
   constructor(private dictionaryService: DictionaryService) {
   }
@@ -22,10 +21,6 @@ export class DictionaryComponent implements OnInit {
   getAll() {
     this.dictionaries = this.dictionaryService.getAll();
     console.log(this.dictionaries);
-  }
-
-  searchByWord() {
-    this.dictionaries = this.dictionaryService.searchByWord(this.searchWord);
   }
 
 }
