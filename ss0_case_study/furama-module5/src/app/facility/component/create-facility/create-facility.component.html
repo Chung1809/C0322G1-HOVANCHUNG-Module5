@@ -1,6 +1,13 @@
 <div class="row div" style="justify-content: center">
-  <form [formGroup]="facilityForm" class="needs-validation p-4"
+  <form [formGroup]="facilityForm" (ngSubmit)="saveFacility()" class="needs-validation p-4"
         style="background-color: whitesmoke; border-radius: 1rem; width: 70%" novalidate>
+    <div class="form-row">
+      <div class="col-md-4 mb-3">
+        <label >ID</label>
+        <input type="text" class="form-control" formControlName="id">
+        <p style="color: red" *ngIf="!id.valid && (id.dirty ||id.touched)">Can't be blank and contain numeric characters</p>
+      </div>
+    </div>
     <div class="form-row">
       <div class="col-md-4 mb-3">
         <label >Facility Name</label>
@@ -9,15 +16,18 @@
       </div>
       <div class="col-md-4 mb-3">
         <label >Type Facility</label>
-        <select  class="form-control type" >
-          <option ></option>
+        <select  class="form-control "  formControlName="typeFacility">
+          <option *ngFor="let temp of facilityList" [ngValue]="temp">{{temp.name}}</option>
         </select>
+        <p style="color: red" *ngIf="!typeFacility.valid && (typeFacility.dirty ||typeFacility.touched)">Can't be blank and contain numeric characters</p>
+
       </div>
       <div class="col-md-4 mb-3">
         <label >Rent Type</label>
-        <select  class="form-control" >
-          <option></option>
+        <select  class="form-control" formControlName="rentType">
+          <option *ngFor="let temp of rentTypeList" [ngValue]="temp">{{temp.name}}</option>
         </select>
+        <p style="color: red" *ngIf="!rentType1.valid && (rentType1.dirty ||rentType1.touched)">Can't be blank and contain numeric characters</p>
       </div>
     </div>
     <div class="form-row">
@@ -64,9 +74,9 @@
       </div>
       <div class="col-md-4 mb-3">
         <label >Facility Free</label>
-        <select  class="form-control" >
-          <option ></option>
-        </select>
+        <input type="text"  class="form-control" formControlName="free">
+        <p style="color: red" *ngIf="!free.valid && (free.dirty ||free.touched)">Can't be blank and contain numeric characters</p>
+
       </div>
       <div class="col-md-4 mb-3">
         <label >Url</label>

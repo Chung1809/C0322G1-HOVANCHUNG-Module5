@@ -13,4 +13,7 @@ export class RentTypeService {
     {id:4,name:'Hour'},
   ]
   constructor() { }
+  getList(){
+    return this.rentType;
+  }
 }

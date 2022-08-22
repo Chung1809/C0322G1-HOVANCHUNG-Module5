@@ -1,23 +1,33 @@
-<div class="row x" style="justify-content: center">
-  <form [formGroup]="facilityForm"  class="needs-validation p-4" style="background-color: whitesmoke; border-radius: 1rem; width: 70%" novalidate>
+<div class="row div" style="justify-content: center">
+  <form [formGroup]="facilityForm" (ngSubmit)="submit(facilityId)" class="needs-validation p-4"
+        style="background-color: whitesmoke; border-radius: 1rem; width: 70%" novalidate>
+<!--    <div class="form-row">-->
+<!--      <div class="col-md-4 mb-3">-->
+<!--        <label >ID</label>-->
+<!--        <input type="text" class="form-control" formControlName="id">-->
+<!--        <p style="color: red" *ngIf="!id.valid && (id.dirty ||id.touched)">Can't be blank and contain numeric characters</p>-->
+<!--      </div>-->
+<!--    </div>-->
     <div class="form-row">
       <div class="col-md-4 mb-3">
         <label >Facility Name</label>
         <input type="text" class="form-control" formControlName="name">
         <p style="color: red" *ngIf="!name.valid && (name.dirty ||name.touched)">Can't be blank and contain numeric characters</p>
-
       </div>
       <div class="col-md-4 mb-3">
         <label >Type Facility</label>
-        <select  class="form-control" >
-          <option ></option>
+        <select  class="form-control "  formControlName="typeFacility">
+          <option *ngFor="let temp of facilityTypeList" [ngValue]="temp">{{temp.name}}</option>
         </select>
+        <p style="color: red" *ngIf="!typeFacility.valid && (typeFacility.dirty ||typeFacility.touched)">Can't be blank and contain numeric characters</p>
+
       </div>
       <div class="col-md-4 mb-3">
         <label >Rent Type</label>
-        <select  class="form-control" >
-          <option></option>
+        <select  class="form-control" formControlName="rentType">
+          <option *ngFor="let temp of rentTypeList" [ngValue]="temp">{{temp.name}}</option>
         </select>
+        <p style="color: red" *ngIf="!rentType1.valid && (rentType1.dirty ||rentType1.touched)">Can't be blank and contain numeric characters</p>
       </div>
     </div>
     <div class="form-row">
@@ -25,6 +35,7 @@
         <label >Area</label>
         <input type="text"  class="form-control" placeholder="" required formControlName="area">
         <p style="color: red" *ngIf="!area.valid && (area.dirty ||area.touched)">Can't be left blank</p>
+
       </div>
       <div class="col-md-4 mb-3">
         <label>Cost</label>
@@ -48,13 +59,11 @@
         <label>Description</label>
         <input type="text"  class="form-control" formControlName="description">
         <p style="color: red" *ngIf="!description.valid && (description.dirty ||description.touched)">Can't be left blank</p>
-
       </div>
       <div class="col-md-4 mb-3">
         <label >Area Pool</label>
         <input type="text"  class="form-control" formControlName="areaPool">
         <p style="color: red" *ngIf="!areaPool.valid && (areaPool.dirty ||areaPool.touched)">Can't be blank and is a positive number</p>
-
       </div>
     </div>
     <div class="form-row">
@@ -62,13 +71,12 @@
         <label >Floor</label>
         <input type="text"  class="form-control" formControlName="floor">
         <p style="color: red" *ngIf="!floor.valid && (floor.dirty ||floor.touched)">Can't be blank and is a positive number</p>
-
       </div>
       <div class="col-md-4 mb-3">
         <label >Facility Free</label>
-        <select class="form-control" >
-          <option ></option>
-        </select>
+        <input type="text"  class="form-control" formControlName="free">
+        <p style="color: red" *ngIf="!free.valid && (free.dirty ||free.touched)">Can't be blank and contain numeric characters</p>
+
       </div>
       <div class="col-md-4 mb-3">
         <label >Url</label>
@@ -76,6 +84,7 @@
         <p style="color: red" *ngIf="!url.valid && (url.dirty ||url.touched)">Can't be left blank</p>
       </div>
     </div>
+
     <div class="form-group">
       <div class="form-check">
         <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
@@ -88,13 +97,13 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-1">
+      <div class="col-md-2">
         <a [routerLink]="['/list-facility']"><button class="btn text-white" type="submit" style="background-color: black">Back</button></a>
       </div>
-      <div class="col-md-1">
-        <button class="btn text-white" type="submit" style="background-color: black">Create</button>
+      <div class="col-md-2">
+        <button class="btn text-white" type="submit" style="background-color: black" [disabled]="!facilityForm.valid">Save changes</button>
       </div>
-      <div class="col-md-10"></div>
+      <div class="col-md-8"></div>
     </div>
   </form>
 

@@ -2,8 +2,15 @@
   <form [formGroup]="customerForm" (ngSubmit)="update(customerId)" class="needs-validation p-4" style="background-color: whitesmoke; border-radius: 1rem; width: 70%" novalidate>
     <div class="form-row">
       <div class="col-md-4 mb-3">
+        <label >ID</label>
+        <input type="text" readonly class="form-control" placeholder="KH-XXXX" formControlName="id">
+        <p style="color: red" *ngIf="!id1.valid && (id1.dirty ||id1.touched)">First letter must be capitalized</p>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-md-4 mb-3">
         <label >Code Customer</label>
-        <input type="text"  class="form-control" placeholder="KH-XXXX" value="" required formControlName="code">
+        <input type="text"  class="form-control" placeholder="KH-XXXX"  formControlName="code">
         <p style="color: red" *ngIf="!code.valid && (code.dirty ||code.touched)">First letter must be capitalized</p>
       </div>
       <div class="col-md-4 mb-3">

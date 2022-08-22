@@ -85,18 +85,18 @@ export class CustomerServiceService {
     this.customerList.push(customer)
   }
 
-  delete(id: number) {
+  delete(id: number):void {
     this.customerList = this.customerList.filter(c => {
       return c.id !== id;
     })
   }
 
-  findById(id: number) {
-    return this.customerList.find((c) => c.id === id);
+  findById(id: number):Customer {
+    return this.customerList.find((c) => c.id == id);
     console.log(this.customerList.find((c) => c.id === id))
   }
 
-  update(id: number, customer: Customer) {
+  update(id: number, customer: Customer):void {
     for (let i = 0; i < this.customerList.length; i++) {
       if (this.customerList[i].id === id) {
         this.customerList[i] = customer;

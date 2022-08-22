@@ -14,4 +14,6 @@ export class FacilityTypeService {
   getList(){
     return this.facilityType;
   }
+
+
 }

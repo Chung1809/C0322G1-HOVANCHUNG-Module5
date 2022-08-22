@@ -20,4 +20,25 @@ export class FacilityService {
   getList(){
     return this.facility
   }
+
+  save(facility: any) {
+    this.facility.push(facility)
+  }
+  findById(id:number): Facility {
+    return this.facility.find(p=> p.id == id);
+  }
+
+  update(id: number, facilities :Facility):void {
+    for (let i = 0; i < this.facility.length; i++) {
+      if (this.facility[i].id === id) {
+        this.facility[i] = facilities;
+      }
+    }
+  }
+
+  deleteFacility(deleteId: number):void {
+    this.facility = this.facility.filter( p=> {
+     return p.id !== deleteId;
+   })
+  }
 }
