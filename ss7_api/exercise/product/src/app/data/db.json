@@ -1,0 +1,36 @@
+{
+  "product": [
+    {
+      "id": 2,
+      "category": {
+        "id": 2,
+        "name": "Samsung"
+      },
+      "price": "6000000",
+      "description": "98%"
+    },
+    {
+      "id": 3,
+      "category": {
+        "id": 1,
+        "name": "Iphone"
+      },
+      "price": "7000",
+      "description": "100%"
+    }
+  ],
+  "category": [
+    {
+      "id": 1,
+      "name": "Iphone"
+    },
+    {
+      "id": 2,
+      "name": "Samsung"
+    },
+    {
+      "id": 3,
+      "name": "Oppo"
+    }
+  ]
+}
