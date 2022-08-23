@@ -6,6 +6,7 @@ import {Router} from "@angular/router";
 import {FacilityService} from "../../service/facility.service";
 import {FacilityType} from "../../../facility-type/model/facility-type";
 import {RentType} from "../../../rent-type/model/rent-type";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-create-facility',
@@ -15,10 +16,12 @@ import {RentType} from "../../../rent-type/model/rent-type";
 export class CreateFacilityComponent implements OnInit {
   facilityList: FacilityType[] = [];
   rentTypeList: RentType[] = [];
+  temp:number;
   constructor(private facility:FacilityService,
               private facilityType:FacilityTypeService,
               private rentType:RentTypeService,
-              private router:Router) { }
+              private router:Router,
+              private toast:ToastrService) { }
 
   ngOnInit(): void {
     this.facilityList = this.facilityType.getList();
@@ -85,11 +88,14 @@ export class CreateFacilityComponent implements OnInit {
     const facility = this.facilityForm.value;
     this.facility.save(facility);
     this.facilityForm.reset();
+    this.toast.success("Create successfully!")
     this.router.navigate(['/list-facility'])
 
   }
 
-  change(value: any) {
-    
+
+
+  changeFacility(value: any) {
+    this.temp = value;
   }
 }

@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
 import {Facility} from "../model/facility";
+import {FacilityTypeService} from "../../facility-type/service-facility-type/facility-type.service";
+import {RentTypeService} from "../../rent-type/service/rent-type.service";
+import {FacilityType} from "../../facility-type/model/facility-type";
+import {RentType} from "../../rent-type/model/rent-type";
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +20,10 @@ export class FacilityService {
     {id:8,name:'BEACH FRONT VILLAS',typeFacility:{id:3,name:'Villa'},rentType:{id:1,name:'Year'},area:'900',cost:'10000',people:'5',standardRoom:'Member',description:'Ngắm biển',areaPool:'100',floor:12,free:'Vui chơi',url:'/assets/img/20.jpg'},
     {id:9,name:'POOL VILLAS',typeFacility:{id:2,name:'Room'},rentType:{id:4,name:'Hour'},area:'320',cost:'7500',people:'5',standardRoom:'Vip',description:'Ngắm biển',areaPool:'120',floor:13,free:'Vui chơi',url:'/assets/img/23.jpg'},
   ]
-  constructor() { }
+
+  constructor() {
+
+  }
   getList(){
     return this.facility
   }
@@ -29,12 +36,32 @@ export class FacilityService {
   }
 
   update(id: number, facilities :Facility):void {
+    if (facilities.typeFacility.id == 3) {
+      facilities.free = '';
+    } else if (facilities.typeFacility.id == 1){
+      facilities.free = '';
+      facilities.areaPool='';
+    } else if (facilities.typeFacility.id == 2){
+      facilities.description = '';
+      facilities.free = '';
+      facilities.floor = null;
+      facilities.areaPool = null;
+    } for (const item of this.facility) {
+      if (facilities.typeFacility.id == item.id) {
+        facilities.typeFacility = item;
+      }
+    }
+    for (const item of this.facility) {
+      if (facilities.rentType.id == item.id) {
+        facilities.rentType = item;
+      }
+
     for (let i = 0; i < this.facility.length; i++) {
       if (this.facility[i].id === id) {
         this.facility[i] = facilities;
       }
     }
-  }
+  }}
 
   deleteFacility(deleteId: number):void {
     this.facility = this.facility.filter( p=> {

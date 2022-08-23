@@ -6,6 +6,7 @@ import {Router} from "@angular/router";
 import {Customer} from "../../../customer/model/customer";
 import {FacilityTypeService} from "../../../facility-type/service-facility-type/facility-type.service";
 import {ContractService} from "../../service/contract.service";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-create-contract',
@@ -18,7 +19,8 @@ export class CreateContractComponent implements OnInit {
   constructor(private customer:CustomerServiceService,
               private facilityType:FacilityTypeService,
               private router:Router,
-              private contract:ContractService) { }
+              private contract:ContractService,
+              private toast:ToastrService) { }
 
   ngOnInit(): void {
     this.customers = this.customer.getList();
@@ -59,6 +61,7 @@ export class CreateContractComponent implements OnInit {
     const contract = this.contractForm.value
     this.contract.save(contract);
     this.contractForm.reset();
+    this.toast.success("Create successfully!")
     this.router.navigate(['/list-contract'])
   }
 }

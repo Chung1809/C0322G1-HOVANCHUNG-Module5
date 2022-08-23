@@ -16,7 +16,7 @@ export class UpdateFacilityComponent implements OnInit {
   facilityId: number;
   facilityTypeList: FacilityType[] = [];
   rentTypeList: RentType[] = [];
-
+  idFacility: number;
   facilityForm:FormGroup;
   constructor( private activatedRoute: ActivatedRoute,
                private facilityType: FacilityTypeService,
@@ -97,4 +97,15 @@ export class UpdateFacilityComponent implements OnInit {
     this.facilityForm.reset();
     this.router.navigate(['/list-facility'])
   }
+
+ compareFacilityType(value,option){
+    return value.id === option.id;
+ }
+  changeFacility(value: any) {
+    return this.idFacility = value;
+  }
+  compareRentType(value,option){
+    return value.id === option.id;
+  }
+
 }

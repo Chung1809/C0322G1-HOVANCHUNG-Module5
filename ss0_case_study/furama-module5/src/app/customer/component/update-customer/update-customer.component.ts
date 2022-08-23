@@ -5,6 +5,7 @@ import {CustomerTypeService} from "../../../customer-type/service-customer-type/
 import {CustomerType} from "../../../customer-type/model/customer-type";
 import {Customer} from "../../model/customer";
 import {CustomerServiceService} from "../../service-customer/customer-service.service";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-update-customer',
@@ -18,7 +19,8 @@ export class UpdateCustomerComponent implements OnInit {
   constructor( private activatedRoute: ActivatedRoute,
                private router: Router,
                private customerServiceService: CustomerServiceService,
-               private customerTypeList: CustomerTypeService) {
+               private customerTypeList: CustomerTypeService,
+               private toast:ToastrService) {
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) =>
     {
       this.customerId = +paramMap.get('id');
@@ -83,6 +85,12 @@ export class UpdateCustomerComponent implements OnInit {
     const customer = this.customerForm.value
     this.customerServiceService.update(customerId,customer)
     this.customerForm.reset();
+    this.toast.success("Update successfully!")
     this.router.navigate(['/list-customer'])
+  }
+  compare(value,option): boolean{
+    return value.id === option.id;
+    console.log(value);
+    console.log(option);
   }
 }

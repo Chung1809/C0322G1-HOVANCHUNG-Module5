@@ -5,6 +5,7 @@ import {CustomerTypeService} from "../../../customer-type/service-customer-type/
 import {Customer} from "../../model/customer";
 import {CustomerType} from "../../../customer-type/model/customer-type";
 import {Router} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-create-customer',
@@ -16,7 +17,8 @@ export class CreateCustomerComponent implements OnInit {
 
   constructor(private customerService: CustomerServiceService,
               private customerTypeService: CustomerTypeService,
-              private router: Router) { }
+              private router: Router,
+              private toast:ToastrService) { }
 
   ngOnInit(): void {
     this.customer = this.customerTypeService.getListCustomerType();
@@ -70,6 +72,7 @@ export class CreateCustomerComponent implements OnInit {
     console.log(this.customerForm.value)
     console.log(this.customerForm.value.gender)
      this.customerService.save(customer)
+    this.toast.success("Create customer successfully!")
      this.customerForm.reset();
      this.router.navigate(['/list-customer'])
   }

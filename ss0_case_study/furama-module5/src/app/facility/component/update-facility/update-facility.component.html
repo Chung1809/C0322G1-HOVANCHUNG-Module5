@@ -1,13 +1,6 @@
 <div class="row div" style="justify-content: center">
-  <form [formGroup]="facilityForm" (ngSubmit)="submit(facilityId)" class="needs-validation p-4"
+  <form [formGroup]="facilityForm" (ngSubmit)="submit(facilityId)" *ngIf="facilityForm" class="needs-validation p-4"
         style="background-color: whitesmoke; border-radius: 1rem; width: 70%" novalidate>
-<!--    <div class="form-row">-->
-<!--      <div class="col-md-4 mb-3">-->
-<!--        <label >ID</label>-->
-<!--        <input type="text" class="form-control" formControlName="id">-->
-<!--        <p style="color: red" *ngIf="!id.valid && (id.dirty ||id.touched)">Can't be blank and contain numeric characters</p>-->
-<!--      </div>-->
-<!--    </div>-->
     <div class="form-row">
       <div class="col-md-4 mb-3">
         <label >Facility Name</label>
@@ -16,16 +9,16 @@
       </div>
       <div class="col-md-4 mb-3">
         <label >Type Facility</label>
-        <select  class="form-control "  formControlName="typeFacility">
-          <option *ngFor="let temp of facilityTypeList" [ngValue]="temp">{{temp.name}}</option>
+        <select  class="form-control "  formControlName="typeFacility"   (change)="changeFacility($event.target.value)">
+          <option *ngFor="let temp of facilityTypeList" [value]="temp.id" >{{temp.name}}</option>
         </select>
         <p style="color: red" *ngIf="!typeFacility.valid && (typeFacility.dirty ||typeFacility.touched)">Can't be blank and contain numeric characters</p>
 
       </div>
       <div class="col-md-4 mb-3">
         <label >Rent Type</label>
-        <select  class="form-control" formControlName="rentType">
-          <option *ngFor="let temp of rentTypeList" [ngValue]="temp">{{temp.name}}</option>
+        <select  class="form-control" formControlName="rentType" [compareWith]="compareRentType">
+          <option *ngFor="let temp of rentTypeList" [value]="temp">{{temp.name}}</option>
         </select>
         <p style="color: red" *ngIf="!rentType1.valid && (rentType1.dirty ||rentType1.touched)">Can't be blank and contain numeric characters</p>
       </div>
@@ -49,30 +42,30 @@
       </div>
     </div>
     <div class="form-row">
-      <div class="col-md-4 mb-3">
+      <div class="col-md-4 mb-3"  *ngIf="idFacility == 3 || idFacility ==1">
         <label>Standard Room</label>
         <input type="text"  class="form-control" formControlName="standardRoom">
         <p style="color: red" *ngIf="!standardRoom.valid && (standardRoom.dirty ||standardRoom.touched)">Can't be left blank</p>
 
       </div>
-      <div class="col-md-4 mb-3">
+      <div class="col-md-4 mb-3" *ngIf="idFacility == 3 || idFacility ==1">
         <label>Description</label>
         <input type="text"  class="form-control" formControlName="description">
         <p style="color: red" *ngIf="!description.valid && (description.dirty ||description.touched)">Can't be left blank</p>
       </div>
-      <div class="col-md-4 mb-3">
+      <div class="col-md-4 mb-3" *ngIf="idFacility == 3">
         <label >Area Pool</label>
         <input type="text"  class="form-control" formControlName="areaPool">
         <p style="color: red" *ngIf="!areaPool.valid && (areaPool.dirty ||areaPool.touched)">Can't be blank and is a positive number</p>
       </div>
     </div>
     <div class="form-row">
-      <div class="col-md-4 mb-3">
+      <div class="col-md-4 mb-3" *ngIf="idFacility == 3 || idFacility ==1">
         <label >Floor</label>
         <input type="text"  class="form-control" formControlName="floor">
         <p style="color: red" *ngIf="!floor.valid && (floor.dirty ||floor.touched)">Can't be blank and is a positive number</p>
       </div>
-      <div class="col-md-4 mb-3">
+      <div class="col-md-4 mb-3" *ngIf="idFacility == 2">
         <label >Facility Free</label>
         <input type="text"  class="form-control" formControlName="free">
         <p style="color: red" *ngIf="!free.valid && (free.dirty ||free.touched)">Can't be blank and contain numeric characters</p>
@@ -101,7 +94,7 @@
         <a [routerLink]="['/list-facility']"><button class="btn text-white" type="submit" style="background-color: black">Back</button></a>
       </div>
       <div class="col-md-2">
-        <button class="btn text-white" type="submit" style="background-color: black" [disabled]="!facilityForm.valid">Save changes</button>
+        <button class="btn text-white" type="submit" style="background-color: black">Save changes</button>
       </div>
       <div class="col-md-8"></div>
     </div>
