@@ -1,12 +1,6 @@
 <div class="row div" style="justify-content: center">
   <form [formGroup]="customerForm" (ngSubmit)="submit()" class="needs-validation p-4" style="background-color: whitesmoke; border-radius: 1rem; width: 70%" novalidate>
-    <div class="form-row">
-      <div class="col-md-4 mb-3">
-        <label >#</label>
-        <input type="text"  class="form-control" placeholder="KH-XXXX" value="" required formControlName="id">
-        <p style="color: red" *ngIf="!id.valid && (id.dirty ||id.touched)">You entered the wrong format</p>
-      </div>
-    </div>
+
     <div class="form-row">
       <div class="col-md-4 mb-3">
         <label >Code Customer</label>
@@ -16,7 +10,7 @@
       <div class="col-md-4 mb-3">
         <label >Type Customer</label>
         <select  class="form-control" formControlName="typeCustomer">
-          <option *ngFor="let temp of customer" [ngValue]="temp">{{temp.name}}</option>
+          <option *ngFor="let temp of customerTypes" [ngValue]="temp">{{temp.name}}</option>
         </select>
         <p style="color: red" *ngIf="!typeCustomer.valid && (typeCustomer.dirty ||typeCustomer.touched)">You entered the wrong format</p>
       </div>
@@ -78,10 +72,10 @@
     </div>
     <div class="row">
     <div class="col-md-1">
-      <a [routerLink]="['/list-customer']"><button class="btn text-white" type="submit" style="background-color: black">Back</button></a>
+      <a [routerLink]="['/customer']"><button class="btn text-white" type="submit" style="background-color: black">Back</button></a>
     </div>
     <div class="col-md-1">
-      <button class="btn text-white" type="submit" style="background-color: black" [disabled]="!customerForm.valid">Create</button>
+      <button class="btn text-white" type="submit" style="background-color: black" >Create</button>
     </div>
     <div class="col-md-10"></div>
     </div>

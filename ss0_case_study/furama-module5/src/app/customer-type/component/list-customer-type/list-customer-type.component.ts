@@ -12,7 +12,9 @@ export class ListCustomerTypeComponent implements OnInit {
   constructor( private customerType:CustomerTypeService) { }
 
   ngOnInit(): void {
-     this.customerTypeList = this.customerType.getListCustomerType()
+     this.customerType.getListCustomerType().subscribe(next=>{
+       return this.customerTypeList = next;
+     })
   }
 
 }

@@ -3,8 +3,8 @@ import {Customer} from "../../customer/model/customer";
 
 export interface Contract {
   id?:number;
-  typeFacility?:Facility;
-  typeCustomer?:Customer;
+  facility?:Facility;
+  customer?:Customer;
   startDate?:string;
   endDate?:string;
   deposit?:string;

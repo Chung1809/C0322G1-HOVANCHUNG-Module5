@@ -7,22 +7,26 @@ import {ListFacilityComponent} from "./facility/component/list-facility/list-fac
 import {CreateFacilityComponent} from "./facility/component/create-facility/create-facility.component";
 import {UpdateFacilityComponent} from "./facility/component/update-facility/update-facility.component";
 import {ListContractComponent} from "./contract/component/list-contract/list-contract.component";
-import {CreateContractComponent} from "./contract/component/create-contract/create-contract.component";
+// import {CreateContractComponent} from "./contract/component/create-contract/create-contract.component";
 import {BodyComponent} from "./body/body/body.component";
 
 
 const routes: Routes = [
   {path:'',pathMatch:'full',redirectTo:'body'},
-  {path:'list-customer',component:ListCustomerComponent},
-  {path:'create-customer',component:CreateCustomerComponent},
-  {path:'update-customer/:id',component:UpdateCustomerComponent},
+  {
+    path: 'customer',
+    loadChildren: () => import('./customer/customer.module').then(module => module.CustomerModule)
+  },
+  {
+    path: 'facility',
+    loadChildren: () => import('./facility/facility.module').then(module => module.FacilityModule)
+  },
+  {
+    path: 'contract',
+    loadChildren: () => import('./contract/contract.module').then(module => module.ContractModule)
+  },
 
-  {path:'list-facility',component:ListFacilityComponent},
-  {path:'create-facility',component:CreateFacilityComponent},
-  {path:'update-facility/:id',component:UpdateFacilityComponent},
 
-  {path:'list-contract',component:ListContractComponent},
-  {path:'create-contract',component:CreateContractComponent},
   {path:'body',component:BodyComponent},
 ];
 

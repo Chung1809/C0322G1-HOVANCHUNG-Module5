@@ -13,7 +13,9 @@ export class ListContractComponent implements OnInit {
   constructor( private contract:ContractService) { }
 
   ngOnInit(): void {
-    this.contracts = this.contract.getList();
+    this.contract.getList().subscribe(next=>{
+      this.contracts = next;
+    });
   }
 
 }

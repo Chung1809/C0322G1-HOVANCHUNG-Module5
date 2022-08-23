@@ -4,7 +4,7 @@
   <div class="col-md-2">
   </div>
   <div class="col-md-2">
-    <a [routerLink]="['/create-contract']"><button class="btn btn-primary">Create Contract</button></a>
+    <a [routerLink]="['/contract/create']"><button class="btn btn-primary">Create Contract</button></a>
   </div>
   <div class="col-md-8"></div>
 </div><!--        ->-->
@@ -26,12 +26,12 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let temp of contracts; index as i">
-        <td>{{i+1}}</td>
-        <td>{{temp.typeFacility.name}}</td>
-        <td>{{temp.typeCustomer.name}}</td>
-        <td>{{temp.startDate}}</td>
-        <td>{{temp.endDate}}</td>
+      <tr *ngFor="let temp of contracts">
+        <td>{{temp.id}}</td>
+        <td>{{temp.facility.name}}</td>
+        <td>{{temp.customer.name}}</td>
+        <td>{{temp.startDate|date:"dd/MM/yyyy"}}</td>
+        <td>{{temp.endDate|date:"dd/MM/yyyy"}}</td>
         <td>{{temp.deposit}}</td>
         <td>{{temp.totalMoney}}</td>
         <td>

@@ -1,0 +1,412 @@
+{
+  "customer": [
+    {
+      "id": 5,
+      "code": "KH-12345",
+      "typeCustomer": {
+        "id": 2,
+        "name": "Platinum"
+      },
+      "name": "Lê Quỳnh Anh",
+      "birthDay": "2022-08-12",
+      "gender": "0",
+      "card": "1974156156",
+      "phone": "090123456789",
+      "email": "supperman1809@gmail.com",
+      "address": "Đà Nẵng"
+    },
+    {
+      "id": 6,
+      "code": "KH-111",
+      "typeCustomer": {
+        "id": 1,
+        "name": "Diamond"
+      },
+      "name": "HỒ VĂN CHUNG",
+      "birthDay": "2022-08-07",
+      "gender": "0",
+      "card": "1974156156",
+      "phone": "090123456789",
+      "email": "supperman1809@gmail.com",
+      "address": "Đà Nẵng"
+    },
+    {
+      "name": "Nguyễn Bảo Anh",
+      "phone": "090123456789",
+      "card": "1974156156",
+      "email": "supperman1809@gmail.com",
+      "code": "KH-113",
+      "id": 7,
+      "typeCustomer": {
+        "id": 1,
+        "name": "Diamond"
+      },
+      "birthDay": "2022-08-07",
+      "address": "Hà Nam",
+      "gender": "1"
+    }
+  ],
+  "customerType": [
+    {
+      "id": 1,
+      "name": "Diamond"
+    },
+    {
+      "id": 2,
+      "name": "Platinum"
+    },
+    {
+      "id": 3,
+      "name": "Gold"
+    },
+    {
+      "id": 4,
+      "name": "Silver"
+    },
+    {
+      "id": 5,
+      "name": "Member"
+    }
+  ],
+  "facility": [
+    {
+      "name": "OCEAN SUITE",
+      "area": 58.8,
+      "cost": "99",
+      "people": 5,
+      "standardRoom": "Vip",
+      "description": "",
+      "url": "/assets/img/9.jpg",
+      "typeFacility": {
+        "id": 2,
+        "name": "Room"
+      },
+      "rentType": {
+        "id": 1,
+        "name": "Year"
+      },
+      "free": "",
+      "id": 1,
+      "areaPool": null,
+      "floor": null
+    },
+    {
+      "name": "OCEAN STUDIO SUITE",
+      "area": "99",
+      "cost": "60099",
+      "people": 5,
+      "standardRoom": "Phòng Đơn,",
+      "description": "100%",
+      "url": "/assets/img/10.jpg",
+      "typeFacility": {
+        "id": 1,
+        "name": "House"
+      },
+      "rentType": {
+        "id": 1,
+        "name": "Year"
+      },
+      "free": "",
+      "id": 2,
+      "areaPool": "",
+      "floor": "8"
+    },
+    {
+      "name": "OCEAN DELUXE",
+      "area": 43.7,
+      "cost": "99",
+      "people": 5,
+      "standardRoom": "Long",
+      "description": "Ngắm biển",
+      "url": "/assets/img/11.jpg",
+      "typeFacility": {
+        "id": 3,
+        "name": "Villa"
+      },
+      "rentType": {
+        "id": 3,
+        "name": "Day"
+      },
+      "free": "",
+      "id": 3,
+      "areaPool": 50,
+      "floor": 7
+    },
+    {
+      "id": 4,
+      "name": "LAGOON SUPERIOR",
+      "typeFacility": {
+        "id": 2,
+        "name": "Room"
+      },
+      "rentType": {
+        "id": 4,
+        "name": "Hour"
+      },
+      "area": 40.1,
+      "cost": 800,
+      "people": 8,
+      "standardRoom": "Member",
+      "description": "Ngắm biển",
+      "areaPool": 80,
+      "floor": "6",
+      "free": "Dọn phòng",
+      "url": "/assets/img/12.jpg"
+    },
+    {
+      "id": 5,
+      "name": "View biển",
+      "typeFacility": {
+        "id": 3,
+        "name": "Villa"
+      },
+      "rentType": {
+        "id": 1,
+        "name": "Year"
+      },
+      "area": 40.1,
+      "cost": 600,
+      "people": 5,
+      "standardRoom": "Phòng Đơn,",
+      "description": "Vip",
+      "areaPool": 70,
+      "floor": 9,
+      "free": "Dọn phòng",
+      "url": "/assets/img/13.jpg"
+    },
+    {
+      "id": 6,
+      "name": "GARDEN DELUXE",
+      "typeFacility": {
+        "id": 1,
+        "name": "House"
+      },
+      "rentType": {
+        "id": 1,
+        "name": "Year"
+      },
+      "area": 43.7,
+      "cost": 900,
+      "people": 5,
+      "standardRoom": "Vip",
+      "description": "Ngắm biển",
+      "areaPool": 80,
+      "floor": 10,
+      "free": "Vui chơi",
+      "url": "/assets/img/14.jpg"
+    },
+    {
+      "id": 7,
+      "name": "PRESIDENTIAL SUITE",
+      "typeFacility": {
+        "id": 1,
+        "name": "House"
+      },
+      "rentType": {
+        "id": 2,
+        "name": "Month"
+      },
+      "area": 130,
+      "cost": 5000,
+      "people": 5,
+      "standardRoom": "Phòng Đơn,",
+      "description": "Thoải mái",
+      "areaPool": 90,
+      "floor": 11,
+      "free": "Dọn phòng",
+      "url": "/assets/img/22.jpg"
+    },
+    {
+      "id": 8,
+      "name": "BEACH FRONT VILLAS",
+      "typeFacility": {
+        "id": 3,
+        "name": "Villa"
+      },
+      "rentType": {
+        "id": 1,
+        "name": "Year"
+      },
+      "area": 900,
+      "cost": 10000,
+      "people": 8,
+      "standardRoom": "Vip",
+      "description": "Ngắm biển",
+      "areaPool": 100,
+      "floor": 12,
+      "free": "Vui chơi",
+      "url": "/assets/img/20.jpg"
+    },
+    {
+      "id": 9,
+      "name": "POOL VILLAS",
+      "typeFacility": {
+        "id": 2,
+        "name": "Room"
+      },
+      "rentType": {
+        "id": 4,
+        "name": "Hour"
+      },
+      "area": 320,
+      "cost": 7500,
+      "people": 8,
+      "standardRoom": "Member",
+      "description": "Tiện nghi",
+      "areaPool": 120,
+      "floor": 13,
+      "free": "Dọn phòng",
+      "url": "/assets/img/23.jpg"
+    },
+    {
+      "name": "Vinhome",
+      "area": "15",
+      "cost": "1",
+      "people": "10",
+      "standardRoom": "",
+      "description": "",
+      "url": "data:image/jpeg;base64,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",
+      "typeFacility": "2",
+      "rentType": 2,
+      "free": "Cắm trại",
+      "id": 10,
+      "areaPool": "",
+      "floor": ""
+    }
+  ],
+  "facilityType": [
+    {
+      "id": 1,
+      "name": "House"
+    },
+    {
+      "id": 2,
+      "name": "Room"
+    },
+    {
+      "id": 3,
+      "name": "Villa"
+    }
+  ],
+  "rentType": [
+    {
+      "id": 1,
+      "name": "Year"
+    },
+    {
+      "id": 2,
+      "name": "Month"
+    },
+    {
+      "id": 3,
+      "name": "Day"
+    },
+    {
+      "id": 4,
+      "name": "Hour"
+    }
+  ],
+  "contract": [
+    {
+      "id": 1,
+      "customer": {
+        "id": 1,
+        "name": "HỒ VĂN CHUNG"
+      },
+      "facility": {
+        "id": 1,
+        "name": "OCEAN SUITE"
+      },
+      "startDate": "2022-02-18",
+      "endDate": "2021-06-18",
+      "deposit": "600",
+      "totalMoney": "10000"
+    },
+    {
+      "deposit": "100",
+      "totalMoney": "5000",
+      "facility": {
+        "name": "OCEAN STUDIO SUITE",
+        "area": "99",
+        "cost": "60099",
+        "people": 5,
+        "standardRoom": "Phòng Đơn,",
+        "description": "",
+        "url": "/assets/img/10.jpg",
+        "typeFacility": {
+          "id": 2,
+          "name": "Room"
+        },
+        "rentType": {
+          "id": 3,
+          "name": "Day"
+        },
+        "free": "",
+        "id": 2,
+        "areaPool": null,
+        "floor": null
+      },
+      "customer": {
+        "id": 6,
+        "code": "KH-111",
+        "typeCustomer": {
+          "id": 1,
+          "name": "Diamond"
+        },
+        "name": "HỒ VĂN CHUNG",
+        "birthDay": "2022-08-07",
+        "gender": "0",
+        "card": "1974156156",
+        "phone": "090123456789",
+        "email": "supperman1809@gmail.com",
+        "address": "Đà Nẵng"
+      },
+      "id": 2,
+      "startDate": "2022-08-03",
+      "endDate": "2022-08-04"
+    },
+    {
+      "deposit": "1000",
+      "totalMoney": "20000",
+      "facility": {
+        "id": 4,
+        "name": "LAGOON SUPERIOR",
+        "typeFacility": {
+          "id": 2,
+          "name": "Room"
+        },
+        "rentType": {
+          "id": 4,
+          "name": "Hour"
+        },
+        "area": 40.1,
+        "cost": 800,
+        "people": 8,
+        "standardRoom": "Member",
+        "description": "Ngắm biển",
+        "areaPool": 80,
+        "floor": "6",
+        "free": "Dọn phòng",
+        "url": "/assets/img/12.jpg"
+      },
+      "customer": {
+        "id": 6,
+        "code": "KH-111",
+        "typeCustomer": {
+          "id": 1,
+          "name": "Diamond"
+        },
+        "name": "HỒ VĂN CHUNG",
+        "birthDay": "2022-08-07",
+        "gender": "0",
+        "card": "1974156156",
+        "phone": "090123456789",
+        "email": "supperman1809@gmail.com",
+        "address": "Đà Nẵng"
+      },
+      "id": 3,
+      "startDate": "2022-08-09",
+      "endDate": "2022-08-05"
+    }
+  ]
+}

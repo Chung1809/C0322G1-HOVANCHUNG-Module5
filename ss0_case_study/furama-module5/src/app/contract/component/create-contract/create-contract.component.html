@@ -3,7 +3,7 @@
     <div class="form-row">
       <div class="col-md-4 mb-3">
         <label >Customer</label>
-        <select  class="form-control" formControlName="typeCustomer">
+        <select  class="form-control" formControlName="customer">
           <option *ngFor="let temp of customers" [ngValue]="temp">{{temp.name}}</option>
         </select>
         <p style="color: red" *ngIf="!typeCustomer.valid && (typeCustomer.dirty ||typeCustomer.touched)">You enter wrong format</p>
@@ -11,8 +11,8 @@
       </div>
       <div class="col-md-4 mb-3">
         <label >Facility</label>
-        <select  class="form-control" formControlName="typeFacility">
-          <option *ngFor="let temp of facilityTypeList" [ngValue]="temp">{{temp.name}}</option>
+        <select  class="form-control" formControlName="facility">
+          <option *ngFor="let temp of facilityList" [ngValue]="temp">{{temp.name}}</option>
         </select>
         <p style="color: red" *ngIf="!typeFacility.valid && (typeFacility.dirty ||typeFacility.touched)">You enter wrong format</p>
       </div>
@@ -68,7 +68,7 @@
     </div>
     <div class="row">
       <div class="col-md-1">
-        <a [routerLink]="['/list-contract']"><button class="btn text-white" type="submit" style="background-color: black">Back</button></a>
+        <a [routerLink]="['/contract']"><button class="btn text-white" type="submit" style="background-color: black">Back</button></a>
       </div>
       <div class="col-md-1">
         <button class="btn text-white" type="submit" style="background-color: black">Create</button>

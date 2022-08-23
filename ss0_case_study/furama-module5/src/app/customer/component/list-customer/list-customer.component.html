@@ -4,7 +4,7 @@
   <div class="col-md-2">
   </div>
   <div class="col-md-2">
-    <a [routerLink]="['/create-customer']"><button class="btn btn-primary">Create Customer</button></a>
+    <a [routerLink]="['/customer/create']"><button class="btn btn-primary">Create Customer</button></a>
   </div>
   <div class="col-md-8"></div>
 </div>
@@ -35,14 +35,14 @@
         <td>{{temp.code}}</td>
         <td>{{temp.typeCustomer.name}}</td>
         <td>{{temp.name}}</td>
-        <td>{{temp.birthDay}}</td>
+        <td>{{temp.birthDay|date:"dd/MM/yyyy"}}</td>
         <td *ngIf="temp.gender == 0">Male</td>
         <td *ngIf="temp.gender == 1">Female</td>
         <td>{{temp.card}}</td>
         <td>{{temp.phone}}</td>
         <td>{{temp.email}}</td>
         <td>{{temp.address}}</td>
-        <td><button class="btn btn-success btn-sm"  [routerLink]="['/update-customer',temp.id]">Edit</button></td>
+        <td><button class="btn btn-success btn-sm"  [routerLink]="['/customer/edit',temp.id]">Edit</button></td>
         <td><button (click)="deleteCustomer(temp)"  class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
           Delete
         </button></td>

@@ -6,6 +6,8 @@ import {FacilityTypeService} from "../../../facility-type/service-facility-type/
 import {RentTypeService} from "../../../rent-type/service/rent-type.service";
 import {FacilityType} from "../../../facility-type/model/facility-type";
 import {RentType} from "../../../rent-type/model/rent-type";
+import {ToastrService} from "ngx-toastr";
+import {log} from "util";
 
 @Component({
   selector: 'app-update-facility',
@@ -22,33 +24,43 @@ export class UpdateFacilityComponent implements OnInit {
                private facilityType: FacilityTypeService,
                private rentType: RentTypeService,
                private facilityList: FacilityService,
-               private router: Router) {
-    this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) =>
-    {
+               private router: Router,
+               private toast:ToastrService) {
+    this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
       this.facilityId = +paramMap.get('id')
-      const facility = this.facilityList.findById(this.facilityId)
-      this.facilityForm = new FormGroup({
-        name: new FormControl(facility.name,[Validators.required,Validators.pattern("[A-Za-z _ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễếệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ]+")]),
-        area: new FormControl(facility.area,[Validators.required,Validators.pattern("^[0-9]{1,}")]),
-        cost:new FormControl(facility.cost,[Validators.required,Validators.pattern("^[0-9]{1,}")]),
-        people:new FormControl(facility.people,[Validators.required,Validators.pattern("^[0-9]{1,}")]),
-        standardRoom:new FormControl(facility.standardRoom,Validators.required),
-        description:new FormControl(facility.description,Validators.required),
-        url:new FormControl(facility.url,Validators.required),
-        typeFacility:new FormControl(facility.typeFacility,Validators.required),
-        rentType:new FormControl(facility.rentType,Validators.required),
-        free:new FormControl(facility.free,Validators.required),
-        id:new FormControl(facility.id,Validators.required),
-        areaPool:new FormControl(facility.areaPool,[Validators.required,Validators.pattern("^[0-9]{1,}")]),
-        floor:new FormControl(facility.floor,[Validators.required,Validators.pattern("[0-9]{1,}")]),
-      })
+      this.getFacility(this.facilityId)
     })
 
   }
+  getFacility(facilityId: number) {
+    return this.facilityList.findById(facilityId).subscribe(next=>{
+      return this.facilityForm = new FormGroup({
+        name: new FormControl(next.name,[Validators.required,
+          Validators.pattern("[A-Za-z _ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễếệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ]+")]),
+        area: new FormControl(next.area,[Validators.required,Validators.pattern("^[0-9]{1,}")]),
+        cost:new FormControl(next.cost,[Validators.required,Validators.pattern("^[0-9]{1,}")]),
+        people:new FormControl(next.people,[Validators.required,Validators.pattern("^[0-9]{1,}")]),
+        standardRoom:new FormControl(next.standardRoom,Validators.required),
+        description:new FormControl(next.description,Validators.required),
+        url:new FormControl(next.url,Validators.required),
+        typeFacility:new FormControl(next.typeFacility,Validators.required),
+        rentType:new FormControl(next.rentType,Validators.required),
+        free:new FormControl(next.free,Validators.required),
+        id:new FormControl(next.id),
+        areaPool:new FormControl(next.areaPool,[Validators.required,Validators.pattern("^[0-9]{1,}")]),
+        floor:new FormControl(next.floor,[Validators.required,Validators.pattern("[0-9]{1,}")]),
+      })
+    })
+  }
+
 
   ngOnInit(): void {
-    this.rentTypeList = this.rentType.getList();
-    this.facilityTypeList = this.facilityType.getList();
+     this.facilityType.getList().subscribe(next=>{
+       return this.facilityTypeList = next;
+     });
+     this.rentType.getList().subscribe(next=>{
+       return this.rentTypeList = next;
+     });
 
   }
   get name(){
@@ -93,19 +105,26 @@ export class UpdateFacilityComponent implements OnInit {
 
   submit(facilityId: number) {
     const facility = this.facilityForm.value;
-    this.facilityList.update(facilityId,facility);
-    this.facilityForm.reset();
-    this.router.navigate(['/list-facility'])
+    console.log(facility)
+      this.facilityList.update(facilityId,facility).subscribe(next=> {
+        this.router.navigate(['/facility']);
+        this.toast.success("Update successfully!")
+        }
+      )
   }
 
- compareFacilityType(value,option){
+ compareFacilityType(value,option): boolean{
+   console.log(value)
+   console.log(option)
     return value.id === option.id;
+
  }
-  changeFacility(value: any) {
-    return this.idFacility = value;
-  }
-  compareRentType(value,option){
-    return value.id === option.id;
+
+  changeFacility(event: any) {
+    console.log(event)
+    console.log(event.target.value)
+    return this.idFacility = event.target.value;
+
   }
 
 }

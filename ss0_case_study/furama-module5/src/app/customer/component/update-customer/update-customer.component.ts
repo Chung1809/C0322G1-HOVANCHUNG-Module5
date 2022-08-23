@@ -13,7 +13,7 @@ import {ToastrService} from "ngx-toastr";
   styleUrls: ['./update-customer.component.css']
 })
 export class UpdateCustomerComponent implements OnInit {
-  customerType: CustomerType[] = this.customerTypeList.getListCustomerType();
+  customerType:CustomerType[] =[];
   customerId: number;
   customerForm: FormGroup;
   constructor( private activatedRoute: ActivatedRoute,
@@ -25,25 +25,33 @@ export class UpdateCustomerComponent implements OnInit {
     {
       this.customerId = +paramMap.get('id');
       console.log(this.customerId)
-      const customer = this.getFindById(this.customerId)
-      console.log(this.getFindById(this.customerId))
-      this.customerForm = new FormGroup({
-        id: new FormControl(customer.id,Validators.required),
-        code: new FormControl(customer.code,Validators.required),
-        typeCustomer: new FormControl(customer.typeCustomer,Validators.required),
-        name: new FormControl(customer.name,[Validators.required,Validators.pattern("^[A-Za-z _ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễếệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ]+")]),
-        birthDay: new FormControl(customer.birthDay,Validators.required),
-        gender: new FormControl(customer.gender,Validators.required),
-        card: new FormControl(customer.card,Validators.pattern("[0-9]{7,12}$")),
-        phone:new FormControl(customer.phone,[Validators.required,Validators.pattern("((84\\)+(90))|(\\(84\\)\\+(91))|(090)|(091))\\d{7,}")]),
-        email:new FormControl(customer.email,Validators.pattern("^[A-Za-z0-9+_.-]+@(.+)$")),
-        address: new FormControl(customer.address,Validators.required),
-      })
+     this.getCustomer(this.customerId)
+
+
     })
   }
 
   ngOnInit(): void {
+    this.customerTypeList.getListCustomerType().subscribe(next=>{
+      return this.customerType = next;
+    })
+  }
+  getCustomer(id: number) {
+    return this.customerServiceService.findById(id).subscribe(c => {
+      return this.customerForm = new FormGroup({
+        id: new FormControl(c.id,Validators.required),
+        code: new FormControl(c.code,Validators.required),
+        typeCustomer: new FormControl(c.typeCustomer,Validators.required),
+        name: new FormControl(c.name,[Validators.required,Validators.pattern("^[A-Za-z _ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễếệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ]+")]),
+        birthDay: new FormControl(c.birthDay,Validators.required),
+        gender: new FormControl(c.gender,Validators.required),
+        card: new FormControl(c.card,Validators.pattern("[0-9]{7,12}$")),
+        phone:new FormControl(c.phone,[Validators.required,Validators.pattern("((84\\)+(90))|(\\(84\\)\\+(91))|(090)|(091))\\d{7,}")]),
+        email:new FormControl(c.email,Validators.pattern("^[A-Za-z0-9+_.-]+@(.+)$")),
+        address: new FormControl(c.address,Validators.required),
 
+      });
+    });
   }
 
   get name(){
@@ -76,17 +84,15 @@ export class UpdateCustomerComponent implements OnInit {
   get gender(){
     return this.customerForm.get('gender')
   }
-  getFindById(id:number){
-    return this.customerServiceService.findById(id);
-  }
+
 
 
   update(customerId:number){
     const customer = this.customerForm.value
-    this.customerServiceService.update(customerId,customer)
-    this.customerForm.reset();
-    this.toast.success("Update successfully!")
-    this.router.navigate(['/list-customer'])
+    this.customerServiceService.update(customerId,customer).subscribe(next=>{
+       this.toast.success("Update successfully!")
+       this.router.navigate(['/customer'])
+    })
   }
   compare(value,option): boolean{
     return value.id === option.id;

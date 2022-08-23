@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Facility} from "../../model/facility";
 import {FacilityService} from "../../service/facility.service";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-list-facility',
@@ -11,10 +12,13 @@ export class ListFacilityComponent implements OnInit {
   deleteId:number;
   deleteName:string;
  facilities:Facility[] = []
-  constructor(private facility:FacilityService) { }
+  constructor(private facility:FacilityService
+              ) { }
 
   ngOnInit(): void {
-   this.facilities = this.facility.getList();
+   this.facility.getList().subscribe(next=>{
+     return this.facilities = next;
+   });
   }
 
   deleteFacility(temp: Facility) {
@@ -23,7 +27,9 @@ export class ListFacilityComponent implements OnInit {
   }
 
   delete(deleteId: number) {
-    this.facility.deleteFacility(deleteId);
-    this.ngOnInit();
+    this.facility.deleteFacility(deleteId).subscribe(next=>{
+      this.ngOnInit();
+    });
+
   }
 }

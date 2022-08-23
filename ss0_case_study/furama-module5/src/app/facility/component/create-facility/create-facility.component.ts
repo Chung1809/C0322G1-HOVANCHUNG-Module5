@@ -24,8 +24,12 @@ export class CreateFacilityComponent implements OnInit {
               private toast:ToastrService) { }
 
   ngOnInit(): void {
-    this.facilityList = this.facilityType.getList();
-    this.rentTypeList = this.rentType.getList();
+     this.facilityType.getList().subscribe(next=>{
+       return this.facilityList= next;
+     });
+     this.rentType.getList().subscribe(next=>{
+       return this.rentTypeList = next;
+     });
   }
   facilityForm = new FormGroup({
     name: new FormControl('',[Validators.required,Validators.pattern("[A-Za-z _ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễếệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ]+")]),
@@ -86,10 +90,12 @@ export class CreateFacilityComponent implements OnInit {
 
   saveFacility() {
     const facility = this.facilityForm.value;
-    this.facility.save(facility);
-    this.facilityForm.reset();
-    this.toast.success("Create successfully!")
-    this.router.navigate(['/list-facility'])
+    this.facility.save(facility).subscribe(next=>{
+      this.facilityForm.reset();
+      this.toast.success("Create successfully!")
+      this.router.navigate(['/facility'])
+    });
+
 
   }
 

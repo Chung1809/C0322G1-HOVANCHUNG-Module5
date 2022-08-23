@@ -7,6 +7,8 @@ import {Customer} from "../../../customer/model/customer";
 import {FacilityTypeService} from "../../../facility-type/service-facility-type/facility-type.service";
 import {ContractService} from "../../service/contract.service";
 import {ToastrService} from "ngx-toastr";
+import {FacilityService} from "../../../facility/service/facility.service";
+import {Facility} from "../../../facility/model/facility";
 
 @Component({
   selector: 'app-create-contract',
@@ -15,22 +17,26 @@ import {ToastrService} from "ngx-toastr";
 })
 export class CreateContractComponent implements OnInit {
   customers:Customer[] = [];
-  facilityTypeList:FacilityType[] = [];
+  facilityList:Facility[] = [];
   constructor(private customer:CustomerServiceService,
-              private facilityType:FacilityTypeService,
+              private facility:FacilityService,
               private router:Router,
               private contract:ContractService,
               private toast:ToastrService) { }
 
   ngOnInit(): void {
-    this.customers = this.customer.getList();
-    this.facilityTypeList = this.facilityType.getList();
+    this.customer.getList().subscribe(next=>{
+      return this.customers = next;
+    });
+     this.facility.getList().subscribe(next=>{
+       return this.facilityList = next;
+     });
   }
   contractForm = new FormGroup({
     deposit:new FormControl('',[Validators.required,Validators.pattern("^[0-9]{1,}$")]),
     totalMoney:new FormControl('',[Validators.required,Validators.pattern("^[0-9]{1,}$")]),
-    typeFacility: new FormControl('',Validators.required),
-    typeCustomer: new FormControl('',Validators.required),
+    facility: new FormControl('',Validators.required),
+    customer: new FormControl('',Validators.required),
     id: new FormControl('',Validators.required),
     startDate: new FormControl('',Validators.required),
     endDate: new FormControl('',Validators.required),
@@ -42,10 +48,10 @@ export class CreateContractComponent implements OnInit {
     return this.contractForm.get('totalMoney');
   }
   get typeFacility(){
-    return this.contractForm.get('typeFacility');
+    return this.contractForm.get('facility');
   }
   get typeCustomer(){
-    return this.contractForm.get('typeCustomer');
+    return this.contractForm.get('customer');
   }
   get endDate(){
     return this.contractForm.get('endDate');
@@ -59,9 +65,15 @@ export class CreateContractComponent implements OnInit {
 
   submit() {
     const contract = this.contractForm.value
-    this.contract.save(contract);
-    this.contractForm.reset();
-    this.toast.success("Create successfully!")
-    this.router.navigate(['/list-contract'])
+    this.contract.save(contract).subscribe(()=>{
+     if(!contract.valid){
+       this.contractForm.reset();
+       this.toast.success("Create successfully!")
+       this.router.navigate(['/contract'])
+     }else {
+       this.toast.error("Create fails!")
+     }
+    });
+
   }
 }

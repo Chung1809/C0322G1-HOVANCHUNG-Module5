@@ -20,6 +20,8 @@ import { ListFacilityTypeComponent } from './facility-type/component/list-facili
 import { ListCustomerTypeComponent } from './customer-type/component/list-customer-type/list-customer-type.component';
 import { ListRentTypeComponent } from './rent-type/component/list-rent-type/list-rent-type.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
+
 
 @NgModule({
   declarations: [
@@ -44,7 +46,8 @@ import {ReactiveFormsModule} from "@angular/forms";
         BrowserAnimationsModule,
         ToastrModule.forRoot(),
         AppRoutingModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        HttpClientModule,
     ],
   providers: [],
   bootstrap: [AppComponent]

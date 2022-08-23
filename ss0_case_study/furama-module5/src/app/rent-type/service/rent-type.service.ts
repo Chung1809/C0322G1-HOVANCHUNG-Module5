@@ -1,19 +1,16 @@
 import { Injectable } from '@angular/core';
 import {RentType} from "../model/rent-type";
-
+import {HttpClient} from "@angular/common/http";
+import {Observable} from "rxjs";
+import {enviroment} from "../../enviroment/enviroment";
+const API_URL =`${enviroment.apiUrlRentType}`
 @Injectable({
   providedIn: 'root'
 })
 export class RentTypeService {
 
-  rentType: RentType[] = [
-    {id:1,name:'Year'},
-    {id:2,name:'Month'},
-    {id:3,name:'Day'},
-    {id:4,name:'Hour'},
-  ]
-  constructor() { }
-  getList(){
-    return this.rentType;
+  constructor(private httpClient:HttpClient) { }
+  getList(): Observable<RentType[]>{
+    return this.httpClient.get<RentType[]>(API_URL);
   }
 }
