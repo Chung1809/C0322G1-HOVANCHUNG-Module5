@@ -1,0 +1,36 @@
+{
+  "student": [
+    {
+      "name": "Lê Thị Quỳnh Anh2",
+      "birthDay": "2001-05-28",
+      "class": {
+        "id": 1,
+        "name": "C0322G1"
+      },
+      "id": 1
+    },
+    {
+      "name": "Nguyễn Thị Vân Anh",
+      "birthDay": "2022-08-06",
+      "class": {
+        "id": 2,
+        "name": "C0222G1"
+      },
+      "id": 2
+    }
+  ],
+  "class": [
+    {
+      "id": 1,
+      "name": "C0322G1"
+    },
+    {
+      "id": 2,
+      "name": "C0222G1"
+    },
+    {
+      "id": 3,
+      "name": "C01221G1"
+    }
+  ]
+}

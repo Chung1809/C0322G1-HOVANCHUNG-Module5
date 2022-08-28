@@ -1,0 +1,75 @@
+<div class="row div" style="justify-content: center">
+  <form [formGroup]="patientForm" (ngSubmit)="submit()" class="needs-validation p-4" style="background-color: whitesmoke; border-radius: 1rem; width: 70%" novalidate>
+
+    <div class="form-row">
+      <div class="col-md-4 mb-3">
+        <label >Mã bệnh án</label>
+        <select  class="form-control" formControlName="codeB" >
+          <option *ngFor="let temp of medicalList" [ngValue]="temp">{{temp.name}}</option>
+        </select>
+        <p style="color: red" *ngIf="!code.valid && (code.dirty ||code.touched)">You entered the wrong format</p>
+      </div>
+      <div class="col-md-4 mb-3">
+        <label >Mã bệnh nhân</label>
+        <input type="text"  class="form-control" placeholder="Le Van A"  formControlName="patientCode">
+        <p style="color: red" *ngIf="!code.valid && (code.dirty ||code.touched)">You entered the wrong format</p>
+      </div>
+      <div class="col-md-4 mb-3">
+        <label >Tên bệnh nhân</label>
+        <input type="text"  class="form-control" placeholder="Le Van A" name="name" formControlName="name">
+        <p style="color: red" *ngIf="!name.valid && (name.dirty ||name.touched)">First letter must be capitalized</p>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-md-4 mb-3">
+        <label >Ngày nhập viện</label>
+        <input type="date" class="form-control" placeholder="" required formControlName="startDay">
+        <p style="color: red" *ngIf="!startDay.valid && (startDay.dirty ||startDay.touched)">You entered the wrong format</p>
+      </div>
+      <div class="col-md-4 mb-3">
+        <label>Ngày ra viện</label>
+        <input type="date"  class="form-control"   formControlName="endDay">
+        <p style="color: red" *ngIf="!endDay.valid && (endDay.dirty ||endDay.touched)">You entered the wrong format</p>
+      </div>
+      <div class="col-md-4 mb-3">
+        <label>Lí do nhập viện</label>
+        <textarea type="text"  class="form-control" placeholder="09XXXXXXX" name="phone" formControlName="reason"></textarea>
+        <p style="color: red" *ngIf="!reason.valid && (reason.dirty ||reason.touched)">You entered the wrong format</p>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-md-4 mb-3">
+        <label> Phương pháp điều trị</label>
+        <input type="text"  class="form-control"  required formControlName="procedure">
+        <p style="color: red" *ngIf="!procedure.valid && (procedure.dirty ||procedure.touched)">You entered the wrong format</p>
+      </div>
+      <div class="col-md-4 mb-3">
+        <label >Bác sĩ điều trị</label>
+        <input type="text" class="form-control"  formControlName="doctor">
+        <p style="color: red" *ngIf="!doctor.valid && (doctor.dirty ||doctor.touched)">You entered the wrong format</p>
+      </div>
+    </div>
+      <div class="form-group">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+          <label class="form-check-label" for="invalidCheck">
+            Agree to terms and conditions
+          </label>
+          <div class="invalid-feedback">
+            You must agree before submitting.
+          </div>
+        </div>
+      </div>
+
+    <div class="row">
+      <div class="col-md-2">
+        <a [routerLink]="['/patient']"><button class="btn text-white" type="submit" style="background-color: black">Trở về</button></a>
+      </div>
+      <div class="col-md-2">
+        <button class="btn text-white" type="submit" style="background-color: black" >Thêm mới</button>
+      </div>
+      <div class="col-md-8"></div>
+    </div>
+  </form>
+
+</div>
