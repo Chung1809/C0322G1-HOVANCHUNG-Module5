@@ -1,0 +1,38 @@
+
+<h2 style="text-align: center">Test module</h2>
+
+<div class="row ">
+  <div class="col-md-2">
+  </div>
+  <div class="col-md-2">
+    <a [routerLink]="['/firebase/create']"><button class="btn btn-primary">Thêm mới</button></a>
+  </div>
+  <div class="col-md-8">
+  </div>
+
+
+
+  <div class="container">
+    <div class="row">
+      <table class="table" >
+        <thead>
+        <tr>
+          <th scope="col">STT</th>
+          <th scope="col">Tên </th>
+          <th scope="col">Ảnh</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let temp of firebaseList">
+          <td>{{temp.id}}</td>
+          <td>{{temp.name}}</td>
+          <td>{{temp.image}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+</div>
